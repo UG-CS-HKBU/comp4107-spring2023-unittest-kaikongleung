@@ -113,6 +113,7 @@ abstract class Hero(var role: Role) : Role by role {
 
 abstract class MonarchHero(role: Role) : Hero(role) {
     override val maxHP = 5
+    override var hp: Int = maxHP
 }
 
 interface Handler {
@@ -149,10 +150,12 @@ abstract class WeiHero(role: Role) : Hero(role), Handler {
 
 abstract class WarriorHero(role: Role) : Hero(role) {
     override val maxHP = 4
+    override var hp: Int = maxHP
 }
 
 abstract class AdvisorHero(role: Role) : Hero(role) {
     override val maxHP = 3
+    override var hp: Int = maxHP
 }
 
 class LiuBei : MonarchHero(MonarchRole()) {
@@ -182,16 +185,19 @@ class SunQuan : MonarchHero(MonarchRole()) {
 class SimaYi(role: Role) : WeiHero(role) {
     override val name = "Sima Yi"
     override val maxHP = 3
+    override var hp: Int = maxHP
 }
 
 class XuChu(role: Role) : WeiHero(role) {
     override val name = "Xu Chu"
     override val maxHP = 4
+    override var hp: Int = maxHP
 }
 
 class XiaHouyuan(role: Role) : WeiHero(role) {
     override val name = "XiaHou yuan"
     override val maxHP = 4
+    override var hp: Int = maxHP
 }
 
 class ZhangFei(role: Role) : WarriorHero(role) {
