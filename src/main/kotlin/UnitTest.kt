@@ -62,9 +62,23 @@ object FakeNonmonarchFactory: GameObjectFactory {
     }
 }
 
+object FakeMonarchFactory: GameObjectFactory {
+    var count = 0
+    override fun getRandomRole(): Role =
+        MonarchRole()
+    override fun createRandomHero(): Hero {
+        val hero = when(count++) {
+            0->CaoCao()
+            else -> {CaoCao()}
+        }
+        return hero
+    }
+}
+
 class CaoCaoUnitTest{
     @Test
     fun testCaoDodgeAttack() {
+        monarchHero = FakeMonarchFactory.createRandomHero() as MonarchHero
         heroes.add(monarchHero)
         monarchHero.setCommand(Abandon(monarchHero))
         for (i in 0..2) {
